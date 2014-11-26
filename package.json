@@ -1,7 +1,7 @@
 {
   "name": "kb-ukoly",
   "version": "0.1.0",
-  "description": "readme file",
+  "description": "see README.md",
   "main": "index.coffee",
   "repository": {
     "type": "git",
@@ -11,8 +11,8 @@
     "Moja",
     "rodina"
   ],
-  "author": "TIbor Kulcar",
-  "license": "ISC",
+  "author": "Tibor Kulcar",
+  "license": "proprietary",
   "dependencies": {
     "express": "^4.10.4",
     "body-parser": "^1.9.3",
@@ -22,7 +22,8 @@
     "grunt-contrib-coffee": "^0.12.0",
     "grunt-contrib-less": "^0.12.0",
     "grunt-contrib-watch": "^0.6.1",
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "bower": "*"
   },
   "devDependencies": {
       "supervisor": "*"
@@ -31,6 +32,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node node_modules/coffee-script/bin/coffee  index.coffee",
     "dev": "node node_modules/grunt-cli/bin/grunt dev",
-    "postinstall": "bower install"
+    "watch": "node node_modules/grunt-cli/bin/grunt watch",
+    "postinstall": "node node_modules/bower/bin/bower install"
   }
 }
