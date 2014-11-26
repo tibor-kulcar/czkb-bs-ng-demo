@@ -1,6 +1,6 @@
-#!/usr/bin/env node
-PORT = 8000;
-PROJECT_ROOT = __dirname;
+#!/usr/bin/env coffee
+PORT = 8000
+PROJECT_ROOT = __dirname
 
 print = console.log.bind(console)
 
@@ -13,10 +13,13 @@ app = express()
 
 app.use bodyParser.json()
 # app.use(express.methodOverride()
-app.use express.static(path.join(PROJECT_ROOT, "app"))
+app.use express.static(path.join(PROJECT_ROOT, "app"), {index: ['index.html', 'index.html', ]})
 app.use errorHandler({ dumpExceptions: true, showStack: true })
 
 app.get '/', (req, res) ->
+    res.end()
+
+app.get '/api', (req, res) ->
     res.send 
         resources: [
             name: 'user'
@@ -24,7 +27,7 @@ app.get '/', (req, res) ->
             description: 'Current user information'
         ]
 
-app.get '/me', (req, res) ->
+app.get '/api/me', (req, res) ->
     res.send 
         resources: [
             name: 'account'
@@ -32,7 +35,7 @@ app.get '/me', (req, res) ->
             description: 'Account information'
         ]
 
-app.get '/me/account', (req, res) ->
+app.get '/api/me/account', (req, res) ->
     res.send
         name: 'Rodič Rodičov'
         ammount: 100
