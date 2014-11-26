@@ -36,12 +36,12 @@ Veškerá logika aplikace je řešena na straně frontendu.
 
 
 
-technologie:
+Technologie / nástroje
 
-    - nodejs (http://nodejs.org)
-        - server-side javascript
-    - coffee-script (http://coffeescript.org/)
-        - jazyk, který lze kompilovat do javascriptu
+- nodejs (http://nodejs.org)
+    - server-side javascript
+- coffee-script (http://coffeescript.org/)
+    - jazyk, který lze kompilovat do javascriptu
 
 frontend
 --------
@@ -53,6 +53,8 @@ Struktura souborů
 - /app - hlavní adresář FE
 - /app/templates - šablony použité v angularjs
 
+
+Technologie / nástroje
 
 - Bower (http://bower.io) - package manager pro javascript / css / ... projekty (jako např. bootstrap,
   angularjs, jquery, ...) Umožňuje snadno vytvořit a spravovat knihovny na
