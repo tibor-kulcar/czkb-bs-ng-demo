@@ -18,6 +18,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.10.4",
+    "body-parser": "^1.9.3",
+    "errorhandler": "^1.3.0",
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.12.0",
     "grunt-contrib-less": "^0.12.0",
