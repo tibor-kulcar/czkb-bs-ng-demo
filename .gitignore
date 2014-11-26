@@ -1,0 +1,8 @@
+node_modules
+app/assets/vendor
+app/assets/js
+app/assets/css
+.DS_Store
+.grunt
+.idea
+*.sublime-*
