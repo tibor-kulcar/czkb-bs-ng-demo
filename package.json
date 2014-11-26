@@ -5,7 +5,7 @@
   "main": "index.coffee",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:robing/kb-ukoly.git"
+    "url": "https://github.com/tibor-kulcar/czkb-bs-ng-demo"
   },
   "keywords": [
     "Moja",
