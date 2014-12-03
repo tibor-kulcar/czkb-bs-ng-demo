@@ -23,7 +23,7 @@ module.exports = (app) ->
     # LOGIN / LOGOUT
     app.get '/api-logout', (req, res) ->
         req.session.destroy(
-            res.redirect '/login'
+            res.redirect '/api-login'
         )
 
     app.get '/api-login', (req, res) ->
