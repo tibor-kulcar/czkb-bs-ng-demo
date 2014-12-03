@@ -1,6 +1,6 @@
 app = angular.module 'app', ['ngRoute']
 
-app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+app.config ['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/login/',
         templateUrl: 'templates/login.html'
