@@ -1,4 +1,14 @@
-app = angular.module 'app', []
+app = angular.module 'app', ['ngRoute']
+
+app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+  $routeProvider
+    .when '/login/',
+        templateUrl: 'templates/login.html'
+        controller: 'MainController'
+    .otherwise 
+        templateUrl: 'templates/index.html'
+        controller: 'MainController'    
+]
 
 app.controller 'MainController', ['$scope', '$http', ($scope, $http) ->
     $scope.hello = 'Hello world'
