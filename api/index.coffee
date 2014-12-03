@@ -20,6 +20,40 @@ module.exports = (app) ->
             ]
 
 
+    # LOGIN
+    app.post '/api/login', (req, res) ->
+        sess = req.session
+        if req.body.username
+            sess.username = req.body.username
+            sess.save()
+        res.status(204).end()
+
+    loginRequired =  (req, res, next) ->
+        if not req.session.username
+            res.status(403).end()
+        else
+            next()
+
+    # API EXAMPLE
+    app.use '/api/me', loginRequired
+
+    app.get '/api/me', (req, res) ->
+        res.send 
+            username: req.session.username
+            name: 'Jan Novák'
+            resources: [
+                name: 'account'
+                uri: '/me/account'
+                description: 'Account information'
+            ]
+
+    app.get '/api/me/account', (req, res) ->
+        res.send
+            ammount: 100
+            currency: 'CZK'
+
+
+    # SIMPLE LOGIN / LOGOUT PAGES FOR TESTING
     # LOGIN / LOGOUT
     app.get '/api-logout', (req, res) ->
         req.session.destroy(
@@ -38,32 +72,4 @@ module.exports = (app) ->
                 </form>
             "
 
-    app.post '/api/login', (req, res) ->
-        sess = req.session
-        if req.body.username
-            sess.username = req.body.username
-            sess.save()
-        res.status(204).end()
-
-
-    # API EXAMPLE
-    app.use '/api/me', (req, res, next) ->
-        if not req.session.username
-            res.status(403).end()
-        else
-            next()
-
-    app.get '/api/me', (req, res) ->
-        res.send 
-            username: req.session.username
-            name: 'Jan Novák'
-            resources: [
-                name: 'account'
-                uri: '/me/account'
-                description: 'Account information'
-            ]
-
-    app.get '/api/me/account', (req, res) ->
-        res.send
-            ammount: 100
-            currency: 'CZK'
+    (require './tasks')(app)
