@@ -14,7 +14,7 @@ Optional (for developers):
 RUN
 ===
 `npm start` to start local server on port 8000
-See http://localhost:8000/api or http://localhost:8000/ to see the frontend.
+See [local api server](http://localhost:8000/api) or [local FE](http://localhost:8000/) to see the frontend.
 
 `npm run-script dev` to watch FE sources for changes and recompile if necessary
 
@@ -38,9 +38,9 @@ Veškerá logika aplikace je řešena na straně frontendu.
 
 Technologie / nástroje
 
-- nodejs (http://nodejs.org)
+- [nodejs](http://nodejs.org)
     - server-side javascript
-- coffee-script (http://coffeescript.org/)
+- [coffee-script](http://coffeescript.org/)
     - jazyk, který lze kompilovat do javascriptu
 
 frontend
@@ -56,11 +56,12 @@ Struktura souborů
 
 Technologie / nástroje
 
-- Bower (http://bower.io) - package manager pro javascript / css / ... projekty (jako např. bootstrap,
+- [Bower](http://bower.io) - package manager pro javascript / css / ... projekty (jako např. bootstrap,
   angularjs, jquery, ...) Umožňuje snadno vytvořit a spravovat knihovny na
   straně browseru.
-- Grunt (http://gruntjs.com) - task runner, pro automatizaci (a vlastně i dokumentaci) rutinních
+- [Grunt](http://gruntjs.com) - task runner, pro automatizaci (a vlastně i dokumentaci) rutinních
   úkolů během vývoje (trochu obdoba `make`).
-- Less (http://lesscss.org) - CSS preprocessor rozšiřující standardní CSS jazyk např. o proměnné, dědičnost a pod.
-- CoffeeScript (http://coffeescript.org) - Viz backend
-- angularjs (http://angularjs.org) - A supersonic javaScript MVW Framework
+- [Less](http://lesscss.org) - CSS preprocessor rozšiřující standardní CSS jazyk např. o proměnné, dědičnost a pod.
+- [CoffeeScript](http://coffeescript.org) - Viz backend
+- [angularjs](http://angularjs.org) - A supersonic javaScript MVW Framework
+- [twitter bootstrap](http://getbootstrap.com) - HTML, CSS, a JS framework pro vývoj reponsivních, mobile first webových projektů
