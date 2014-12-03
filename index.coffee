@@ -17,8 +17,7 @@ app.use errorHandler({ dumpExceptions: DEBUG, showStack: DEBUG })
 # serve static files
 app.use express.static(path.join(PROJECT_ROOT, "app"), {index: ['index.html', 'index.html', ]})
 
-api = require './api'
-api(app)
+app.use '/api', require('./api')
 
 print 'Listening on prot %s', PORT
 app.listen PORT
