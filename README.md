@@ -64,3 +64,4 @@ Technologie / nástroje
 - [Less](http://lesscss.org) - CSS preprocessor rozšiřující standardní CSS jazyk např. o proměnné, dědičnost a pod.
 - [CoffeeScript](http://coffeescript.org) - Viz backend
 - [angularjs](http://angularjs.org) - A supersonic javaScript MVW Framework
+- [twitter bootstrap](http://getbootstrap.com) - HTML, CSS, a JS framework pro vývoj reponsivních, mobile first webových projektů
