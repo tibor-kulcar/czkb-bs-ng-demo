@@ -1,4 +1,5 @@
 router = require('express').Router()
+errorHandler = require('./error-handler')
 
 router.get '/', (req, res) ->
     res.send 
@@ -23,5 +24,6 @@ router.get '/api-logout', (req, res) ->
 
 (require './tasks')(router)
 
+router.use errorHandler.middleware
 
 module.exports = router
