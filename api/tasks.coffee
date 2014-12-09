@@ -1,30 +1,32 @@
+router = require('express').Router()
 
-module.exports = (app) ->
-    # mock task list
-    taskList = [
-                id: 1
-                name: 'Ukol cislo 1'
-                description: 'Task definition'
-            ,
-                id: 2
-                name: 'Ukol cislo 2'
-                description: 'Task more specific definition'
-            ,
-                id: 3
-                name: 'Ukol cislo 3'
-                description: 'Task more more specific definition'
-            ]
-
-
-    app.get '/api/tasks', (req, res) ->
-        res.send 
-            taskList: taskList
+# mock task list
+taskList = 
+    1:
+        id: 1
+        name: 'Ukol cislo 1'
+        description: 'Task definition'
+    2:
+        id: 2
+        name: 'Ukol cislo 2'
+        description: 'Task more specific definition'
+    3:
+        id: 3
+        name: 'Ukol cislo 3'
+        description: 'Task more more specific definition'
 
 
-    app.post '/api/tasks', (req, res) ->
-        taskList.push
-            id: 69
-            name: 'Pridany ukol'
-            description: 'Added task'
-        res.status(204).end()
+router.get '/', (req, res) ->
+    res.send(task for task_id, task of taskList)
 
+
+router.post '/', (req, res) ->
+    task =
+        id: req.body.id
+        name: req.body.name
+        description: req.body.description
+    taskList[task.id] = task
+    res.send(task)
+        
+
+module.exports = router
