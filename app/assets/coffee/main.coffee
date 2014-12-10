@@ -13,10 +13,10 @@ app.config ($routeProvider) ->
             controller: 'MainController'
 
 
-app.controller 'MainController', ($scope, $http, $location, Tasks) ->
+app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.hello = 'Hello world'
-    $http.get('/api/me').success (result) ->
-        console.log result
+
+    User.get().success (result) ->
         $scope.hello = "Hello #{result.username}"
         $scope.avatar = result.avatar
         $scope.user = result
@@ -28,14 +28,15 @@ app.controller 'MainController', ($scope, $http, $location, Tasks) ->
         return task.done == no
 
     $scope.login = (username) ->
-        console.log('Logging in ' + username)
-        $http.post('/api/session', {username: username}).success (result) ->
-            console.log('Logged in!')
-            $location.path('/')
+        User.login(username)
 
-app.controller 'MenuController', ($scope, $http, $location) ->
+app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->
         console.log('Logging out')
-        $http.delete('/api/session').success (result) ->
-            console.log('Logged out!')
-            $location.path('/')
+        User.logout()
+
+    $scope.isLogged = () ->
+        return User.isLogged()
+
+    User.get().success (result) ->
+        $scope.user = result

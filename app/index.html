@@ -32,8 +32,8 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <div class="navbar-form navbar-right">
                         <div class="form-group">
-                            <a href="#/login" class="pull-right btn btn-sm btn-success">Login</a>
-                            <a ng-click="logout()" class="btn btn-sm btn-danger">Logout</a>
+                            <a href="#/login" class="pull-right btn btn-sm btn-success" ng-hide="isLogged()">Login</a>
+                            <a ng-click="logout()" class="btn btn-sm btn-danger" ng-show="isLogged()">Logout</a>
                         </div>
                     </div>
                     <ul class="nav navbar-nav">
