@@ -6,14 +6,17 @@ taskList =
         id: 1
         name: 'Ukol cislo 1'
         description: 'Task definition'
+        done: true
     2:
         id: 2
         name: 'Ukol cislo 2'
         description: 'Task more specific definition'
+        done: false
     3:
         id: 3
         name: 'Ukol cislo 3'
         description: 'Task more more specific definition'
+        done: false
 
 
 router.get '/', (req, res) ->
