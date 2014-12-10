@@ -1,17 +1,36 @@
-<div class="jumbotron">
+<div ng-hide="isLogged()" class="jumbotron">
     <div class="container">
-        <h1><img ng-src="{{avatar}}"></img> {{ hello }} </h1>
+        <h1> {{ hello }} </h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sunt perspiciatis, eum maxime cumque praesentium eius totam dicta asperiores, quasi, doloribus! Optio id vel asperiores, minus, deleniti suscipit culpa repellendus.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Call To Action &nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></p>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+<div ng-show="isLogged()" class="container">
+    <div class="page-header">
+        <h1>Skóre</h1>
+        <p class="lead">
+            Jak to u nás vypadá
+        </p>
+    </div>
+    <div class="row" ng-repeat-start="child in user.children">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img class="pull-left" src="{{ child.avatar }}">
+                </div>
+                <div class="col-sm-9">
+                    <span class="h3">{{ child.name }}</span>
+                    <p>
+                        {{ child.account.amount }} {{ child.account.currency }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
             <div class="list-group">
                 <a
-                    ng-repeat="task in tasks"
+                    ng-repeat="task in tasks | filter:done"
                     ng-class="task.done ? 'list-group-item-success' : ''"
                     href=""
                     class="list-group-item">
@@ -24,4 +43,5 @@
             </div>
         </div>
     </div>
+    <hr ng-repeat-end>
 </div>

@@ -27,8 +27,15 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.todo = (task) ->
         return task.done == no
 
+    $scope.done = (task) ->
+        return task.done == yes
+
     $scope.login = (username) ->
         User.login(username)
+
+    $scope.isLogged = () ->
+        return User.isLogged()
+
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->

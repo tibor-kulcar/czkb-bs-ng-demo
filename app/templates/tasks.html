@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="page-header">
 		<h1>Úkoly</h1>
+		<p class="lead">Seznam nepřiřazených úkolů</p>
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
@@ -9,12 +10,11 @@
 
 				<div
 					ng-repeat="task in tasks | filter:todo"
-					ng-class="task.done ? 'list-group-item-success' : ''"
 					href=""
 					class="list-group-item">
 
 					<div class="assign-task input-group">
-						<span class="input-group-addon">Priradit ulohu: </span>
+						<span class="input-group-addon">Přiřadit úkol: </span>
 						<select
 							ng-model="assignTask"
 							class="form-control">
