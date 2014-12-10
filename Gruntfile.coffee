@@ -25,7 +25,7 @@ module.exports = (grunt) ->
                 tasks: 'coffee'
 #run unit tests with karma (server needs to be already running)
             karma: {
-                files: ['app/assets/js/*.js', 'app/assets/test/**/*.js'],
+                files: ['app/assets/coffee/*.coffee', 'app/assets/test/**/*.coffee'],
 #NOTE the :run flag
                 tasks: ['karma:unit:run']
             }
@@ -37,16 +37,15 @@ module.exports = (grunt) ->
                        'app/assets/vendor/angularjs/angular.js',
                        'app/assets/vendor/angular-route/angular-route.js',
                        'app/assets/vendor/angular-mocks/angular-mocks.js',
-                       'app/assets/js/main.js', #index.js must be loaded first!
-                       'app/assets/js/*.js',
-                       'app/assets/test/unit/*.js'
+                       'app/assets/coffee/*.coffee',
+                       'app/assets/test/unit/*.coffee'
                     ],
                 background: true,
                 singleRun: false
 #                basePath: '../'
                 preprocessors:
                     '**/*.coffee': ['coffee']
-
+                    
                 frameworks: ['jasmine']
 
                 browsers: ['Chrome'],
