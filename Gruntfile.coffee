@@ -23,10 +23,61 @@ module.exports = (grunt) ->
             coffee:
                 files: ['app/assets/coffee/**/*.coffee']
                 tasks: 'coffee'
+#run unit tests with karma (server needs to be already running)
+            karma: {
+              files: ['app/assets/js/*.js', 'app/assets/test/**/*.js'],
+#NOTE the :run flag
+              tasks: ['karma:unit:run']
+            }
+
+        karma:
+            unit:
+                options:
+                    files: [
+                       'app/assets/vendor/angularjs/angular.js',
+                       'app/assets/vendor/angular-route/angular-route.js',
+                       'app/assets/vendor/angular-mocks/angular-mocks.js',
+                       'app/assets/js/main.js', #index.js must be loaded first!
+                       'app/assets/js/*.js',
+                       'app/assets/test/unit/*.js'
+                    ],
+                background: true,
+                singleRun: false
+#                basePath: '../'
+#                preprocessors:
+#                   '**/*.coffee': ['coffee']
+
+                frameworks: ['jasmine']
+
+                browsers: ['Chrome'],
+
+                plugins: [
+                   'karma-junit-reporter',
+                   'karma-chrome-launcher',
+                   'karma-firefox-launcher',
+                   'karma-jasmine',
+#                   'karma-coffee-preprocessor'
+                ]
+#
+                junitReporter:
+                   outputFile: 'tests/out/unit.xml',
+                   suite: 'unit'
+
+#                coffeePreprocessor:
+#                   # options passed to the coffee compiler
+#                   options:
+#                       bare: true
+#                       sourceMap: false
+#                   # transforming the filenames
+#                   transformPath: function (path) {
+#                       return path.replace(/\.js$/, '.coffee');
+#}
+
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-less'
     grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-karma'
 
     grunt.registerTask 'default', [
         'build'
@@ -39,5 +90,6 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'dev', [
         'build'
+        'karma'
         'watch'
     ]
