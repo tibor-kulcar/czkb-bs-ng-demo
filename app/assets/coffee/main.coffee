@@ -10,11 +10,13 @@ app.config ($routeProvider) ->
             controller: 'MainController'
 
 
-app.controller 'MainController', ($scope, $http, $location) ->
+app.controller 'MainController', ($scope, $http, $location, Tasks) ->
     $scope.hello = 'Hello world'
     $http.get('/api/me').success (result) ->
         console.log result
         $scope.hello = "Hello #{result.username}"
+        Tasks.get().success (data) ->
+            console.table(data)
 
     $scope.login = (username) ->
         console.log('Logging in ' + username)
