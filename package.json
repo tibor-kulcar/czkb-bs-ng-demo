@@ -28,6 +28,10 @@
     "grunt-contrib-watch": "^0.6.1"
   },
   "devDependencies": {
+    "grunt-karma": "^0.9.0",
+    "karma-chrome-launcher": "^0.1.6",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.3.2",
     "supervisor": "*"
   },
   "scripts": {
