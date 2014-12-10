@@ -21,3 +21,10 @@ app.controller 'MainController', ($scope, $http, $location) ->
         $http.post('/api/session', {username: username}).success (result) ->
             console.log('Logged in!')
             $location.path('/')
+
+app.controller 'MenuController', ($scope, $http, $location) ->
+    $scope.logout = ->
+        console.log('Logging out')
+        $http.delete('/api/session').success (result) ->
+            console.log('Logged out!')
+            $location.path('/')

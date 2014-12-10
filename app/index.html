@@ -18,7 +18,7 @@
     </head>
 
     <body ng-app="app" ng-cloak>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav ng-controller="MenuController" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -33,6 +33,7 @@
                     <div class="navbar-form navbar-right">
                         <div class="form-group">
                             <a href="#/login" class="pull-right btn btn-sm btn-success">Login</a>
+                            <a ng-click="logout()" class="btn btn-sm btn-danger">Logout</a>
                         </div>
                     </div>
                     <ul class="nav navbar-nav">
@@ -45,7 +46,7 @@
         </nav>
 
         <div ng-view></div>
-        
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
