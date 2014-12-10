@@ -1,7 +1,7 @@
 router = require('express').Router()
 
 # mock task list
-taskList = 
+taskList =
     1:
         id: 1
         name: 'Ukol cislo 1'
@@ -27,6 +27,6 @@ router.post '/', (req, res) ->
         description: req.body.description
     taskList[task.id] = task
     res.send(task)
-        
+
 
 module.exports = router
