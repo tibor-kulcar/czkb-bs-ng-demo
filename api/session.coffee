@@ -11,7 +11,8 @@ router.get '/', (req, res) ->
         throw HttpError
             status: 404
             error: "not found"
-            description: "Žádné sezení nebylo dosud vytořeno. Vytvořte nové odesláním username (POST ./) nebo potvrzením formuláře (GET ./new)."
+            description: '''Žádné sezení nebylo dosud vytořeno. Vytvořte nové odesláním username (POST ./)
+                nebo potvrzením formuláře (GET ./new).'''
 
 router.post '/', (req, res) ->
     sess = req.session
@@ -21,9 +22,8 @@ router.post '/', (req, res) ->
     res.status(204).end()
 
 router.delete '/', (req, res) ->
-    req.session.destroy(
-        res.status(204).end()
-    )
+    req.session.destroy()
+    res.status(204).end()
 
 # returns login form (mainly for testing purpose)
 router.get '/new', (req, res) ->
