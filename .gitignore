@@ -5,3 +5,4 @@ app/assets/css
 .*
 !.gitignore
 !.bowerrc
+npm-debug.log

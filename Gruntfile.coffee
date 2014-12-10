@@ -25,9 +25,9 @@ module.exports = (grunt) ->
                 tasks: 'coffee'
 #run unit tests with karma (server needs to be already running)
             karma: {
-              files: ['app/assets/js/*.js', 'app/assets/test/**/*.js'],
+                files: ['app/assets/js/*.js', 'app/assets/test/**/*.js'],
 #NOTE the :run flag
-              tasks: ['karma:unit:run']
+                tasks: ['karma:unit:run']
             }
 
         karma:
@@ -44,8 +44,8 @@ module.exports = (grunt) ->
                 background: true,
                 singleRun: false
 #                basePath: '../'
-#                preprocessors:
-#                   '**/*.coffee': ['coffee']
+                preprocessors:
+                    '**/*.coffee': ['coffee']
 
                 frameworks: ['jasmine']
 
@@ -56,23 +56,12 @@ module.exports = (grunt) ->
                    'karma-chrome-launcher',
                    'karma-firefox-launcher',
                    'karma-jasmine',
-#                   'karma-coffee-preprocessor'
+                   'karma-coffee-preprocessor'
                 ]
-#
+
                 junitReporter:
-                   outputFile: 'tests/out/unit.xml',
-                   suite: 'unit'
-
-#                coffeePreprocessor:
-#                   # options passed to the coffee compiler
-#                   options:
-#                       bare: true
-#                       sourceMap: false
-#                   # transforming the filenames
-#                   transformPath: function (path) {
-#                       return path.replace(/\.js$/, '.coffee');
-#}
-
+                    outputFile: 'tests/out/unit.xml',
+                    suite: 'unit'
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-less'
