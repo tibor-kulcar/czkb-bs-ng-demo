@@ -5,6 +5,9 @@ app.config ($routeProvider) ->
         .when '/login/',
             templateUrl: 'templates/login.html'
             controller: 'MainController'
+        .when '/tasks/',
+            templateUrl: 'templates/tasks.html'
+            controller: 'MainController'
         .otherwise
             templateUrl: 'templates/index.html'
             controller: 'MainController'
@@ -16,9 +19,13 @@ app.controller 'MainController', ($scope, $http, $location, Tasks) ->
         console.log result
         $scope.hello = "Hello #{result.username}"
         $scope.avatar = result.avatar
+        $scope.user = result
         Tasks.get().success (data) ->
             $scope.tasks = data
             console.table(data)
+
+    $scope.todo = (task) ->
+        return task.done == no
 
     $scope.login = (username) ->
         console.log('Logging in ' + username)
