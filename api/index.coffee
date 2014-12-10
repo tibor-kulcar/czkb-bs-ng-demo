@@ -14,7 +14,7 @@ router.use session
 
 # API
 router.get '/', (req, res) ->
-    res.send 
+    res.send
         resources: [
                 name: 'user'
                 uri: '/api/me'
