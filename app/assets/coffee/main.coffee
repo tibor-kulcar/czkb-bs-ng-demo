@@ -15,6 +15,7 @@ app.controller 'MainController', ($scope, $http, $location, Tasks) ->
     $http.get('/api/me').success (result) ->
         console.log result
         $scope.hello = "Hello #{result.username}"
+        $scope.avatar = result.avatar
         Tasks.get().success (data) ->
             $scope.tasks = data
             console.table(data)
