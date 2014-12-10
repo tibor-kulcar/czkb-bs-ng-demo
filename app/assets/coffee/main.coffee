@@ -16,6 +16,7 @@ app.controller 'MainController', ($scope, $http, $location, Tasks) ->
         console.log result
         $scope.hello = "Hello #{result.username}"
         Tasks.get().success (data) ->
+            $scope.tasks = data
             console.table(data)
 
     $scope.login = (username) ->

@@ -6,6 +6,28 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="list-group">
+
+                <a
+                    ng-repeat="task in tasks"
+                    ng-class="task.done ? 'list-group-item-success' : ''"
+                    href=""
+                    class="list-group-item">
+                    <span ng-if="task.done" class="h4 pull-right">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </span>
+                    <h4 class="list-group-item-heading">{{ task.name }}</h4>
+                    <p class="list-group-item-text">{{ task.description }}</p>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
@@ -29,4 +51,3 @@
         </div>
     </div>
 </div>
-
