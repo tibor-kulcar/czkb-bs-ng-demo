@@ -8,8 +8,11 @@ print = console.log.bind(console)
 express      = require 'express'
 errorHandler = require 'errorhandler'
 path         = require 'path'
+params       = require 'express-params'
 
 app = express()
+
+params.extend(app)
 
 # http 500 error on exception
 app.use errorHandler({ dumpExceptions: DEBUG, showStack: DEBUG })
