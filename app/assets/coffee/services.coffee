@@ -1,8 +1,10 @@
 app = angular.module 'app'
 
 app.service 'Tasks', ($resource) ->
-    _URI = 'api/me/tasks/:taskId'
-    _instance = $resource(_URI, {taskId: '@id'})
+    _URI = 'api/me/tasks/:taskId/:action'
+    _instance = $resource(_URI, {taskId: '@id'}) {
+        finish: {method: 'POST', params: {action: 'done'}}
+    }
     return _instance
 
 app.service 'User', ($http, $q, $location, $route) ->

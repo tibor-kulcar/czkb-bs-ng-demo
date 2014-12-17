@@ -37,6 +37,9 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.isLogged = () ->
         return User.isLogged()
 
+    $scope.finishTask = (task) ->
+        Tasks.finish({id: task.id})
+
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->
