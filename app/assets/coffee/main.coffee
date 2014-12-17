@@ -1,4 +1,4 @@
-app = angular.module 'app', ['ngRoute', 'ngResource']
+app = angular.module 'app', ['ngRoute', 'ngResource', 'ngAnimate']
 
 app.config ($routeProvider) ->
     $routeProvider
