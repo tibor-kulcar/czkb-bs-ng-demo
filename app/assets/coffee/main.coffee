@@ -13,7 +13,7 @@ app.config ($routeProvider) ->
             controller: 'MainController'
 
 
-app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
+app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, User) ->
     $scope.hello = 'Hello world'
 
     User.get().success (result) ->
@@ -59,9 +59,18 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.assignTask = (task, user) ->
         console.log('assign task'+task+' to user + '+user)
         task.assignee = parseInt(user.id)
+        task.recent = true
         Tasks.assign({id: task.id}, task)
+        $timeout ->
+            task.recent = false
+        , 3000
 
 
+
+    $scope.unassignTask = (task) ->
+        task.assignee = null
+        task.recent = false
+        Tasks.assign({id: task.id}, task)
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->

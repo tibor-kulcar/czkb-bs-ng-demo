@@ -11,6 +11,7 @@
 				<div
 					ng-repeat="task in tasks | filter:unassigned"
 					href=""
+					ng-class="task.recent ? 'list-group-item-info':''"
 					class="list-group-item">
 
 					<div class="assign-task input-group">
