@@ -13,7 +13,7 @@
 					ng-class="task.recent ? 'recent':''"
 					class="list-group-item">
 
-					<div class="assign-task input-group" ng-show="task.assignee == null">
+					<div class="action-pane input-group" ng-show="task.assignee == null">
 						<span class="input-group-addon">Udělá: </span>
 						<select
 							ng-model="assignedUser"
@@ -23,7 +23,7 @@
 							<option value="">--vyberte--</option>
 						</select>
 					</div>
-					<div class="assign-task input-group" ng-show="task.recent == true">
+					<div class="action-pane input-group" ng-show="task.recent == true">
 						<button class="btn btn-danger" ng-click="unassignTask(task)">Vzít zpět</button>
 					</div>
 

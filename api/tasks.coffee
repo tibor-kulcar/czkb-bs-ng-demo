@@ -100,6 +100,13 @@ router.post '/:taskId/done', (req, res) ->
     task.done = true
     res.send(task)
 
+router.post '/:taskId/undone', (req, res) ->
+    console.log('Returning task: ' + req.param('taskId'))
+    task = _findTask(req.param('taskId'))
+    task.done = false
+    res.send(task)
+
+
 router.post '/:taskId/assign', (req, res) ->
     console.log('Assigning task: ' + req.param('taskId'))
     task = _findTask(req.param('taskId'))

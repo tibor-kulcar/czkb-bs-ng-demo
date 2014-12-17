@@ -22,7 +22,6 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         $scope.user = result
         Tasks.query((data) ->
             $scope.tasks = data
-            console.table(data)
         )
 
     $scope.todo = (task) ->
@@ -41,8 +40,17 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         return User.isLogged()
 
     $scope.finishTask = (task) ->
-        console.log('finish task')
+        task.recent = true
+        task.done = true
         Tasks.finish({id: task.id})
+        $timeout () ->
+            task.recent = false
+        , 4000
+
+    $scope.unfinishTask = (task) ->
+        task.recent = false
+        task.done = false
+        Tasks.unfinish({id: task.id})
 
     $scope.$watch('isLogged()', (value) ->
         if (value)

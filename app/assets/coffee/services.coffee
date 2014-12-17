@@ -4,6 +4,7 @@ app.service 'Tasks', ($resource) ->
     _URI = 'api/me/tasks/:taskId/:action'
     _instance = $resource(_URI, {taskId: '@id'}, {
         finish: {method: 'POST', params: {action: 'done'}},
+        unfinish: {method: 'POST', params: {action: 'undone'}},
         assign: {method: 'POST', params: {action: 'assign'}}
     })
     return _instance
