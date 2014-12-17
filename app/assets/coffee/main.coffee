@@ -31,6 +31,9 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.done = (task) ->
         return task.done == yes
 
+    $scope.unassigned = (task) ->
+        return task.assignee == null
+
     $scope.login = (username) ->
         User.login(username)
 
@@ -44,11 +47,7 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.assignTask = (task, user) ->
         console.log('assign task'+task+' to user + '+user)
         task.assignee = parseInt(user.id)
-        Tasks.assign({id: task.id}, task).then(
-            Tasks.query((data) ->
-                $scope.tasks = data
-                console.table(data)
-            )
+        Tasks.assign({id: task.id}, task)
 	)
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
