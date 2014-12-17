@@ -8,7 +8,7 @@ router.get '/', (req, res) ->
         avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/c_southam/73.jpg'
         children: [
             {
-                id: '1'
+                id: 1
                 name: 'Katka'
                 avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg'
                 account:
@@ -16,7 +16,7 @@ router.get '/', (req, res) ->
                     currency: 'CZK'
             },
             {
-                id: '2'
+                id: 2
                 name: 'Tim'
                 avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/timmillwood/73.jpg'
                 account:
