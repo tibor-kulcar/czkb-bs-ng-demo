@@ -38,6 +38,7 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         return User.isLogged()
 
     $scope.finishTask = (task) ->
+        console.log('finish task')
         Tasks.finish({id: task.id})
 
 
