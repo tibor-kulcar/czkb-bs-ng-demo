@@ -15,7 +15,6 @@ app.config ($routeProvider) ->
 
 app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.hello = 'Hello world'
-    $scope.assignTask = {}
 
     User.get().success (result) ->
         $scope.hello = "Hello #{result.username}"
@@ -23,9 +22,8 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         $scope.user = result
         Tasks.query((data) ->
             $scope.tasks = data
-            console.table $scope.tasks
+            console.table(data)
         )
-        console.log $scope.user
 
     $scope.todo = (task) ->
         return task.done == no
@@ -46,11 +44,6 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         console.log('finish task')
         Tasks.finish({id: task.id})
 
-    $scope.$watch 'assignTask.child', (val) ->
-
-        console.log "a", val, $scope.task
-        Tasks.assign
-
     $scope.$watch('isLogged()', (value) ->
         if (value)
             User.get().success (result) ->
@@ -63,6 +56,13 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
                 )
     )
 
+    $scope.assignTask = (task, user) ->
+        console.log('assign task'+task+' to user + '+user)
+        task.assignee = parseInt(user.id)
+        Tasks.assign({id: task.id}, task)
+	)
+
+
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->
         console.log('Logging out')
@@ -71,8 +71,5 @@ app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.isLogged = () ->
         return User.isLogged()
 
-    $scope.$watch('isLogged()', (value) ->
-        if (value)
-            User.get().success (result) ->
-                $scope.user = result
-    )
+    User.get().success (result) ->
+        $scope.user = result

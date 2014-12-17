@@ -7,16 +7,16 @@ taskList =
         id: 1
         name: 'Ukol cislo 1'
         description: 'Task definition'
-        done: true
+        done: false
         reward: 50
-        assignee: 2
+        assignee: null
     2:
         id: 2
         name: 'Ukol cislo 2'
         description: 'Task more specific definition'
         done: false
         reward: 550
-        assignee: 1
+        assignee: null
     3:
         id: 3
         name: 'Ukol cislo 3'
