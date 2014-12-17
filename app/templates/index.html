@@ -30,7 +30,7 @@
         <div class="col-sm-8">
             <div class="list-group">
                 <a
-                    ng-repeat="task in tasks | filter:(child.id == task.assignee && task.assigned != null)"
+                    ng-repeat="task in tasks | filter:task.assignee == 1"
                     ng-class="task.done ? 'list-group-item-success' : ''"
                     href=""
                     class="list-group-item">

@@ -5,25 +5,62 @@ _ = require('lodash')
 taskList =
     1:
         id: 1
-        name: 'Ukol cislo 1'
-        description: 'Task definition'
+        name: 'Vynést koš'
+        description: 'Už se tu nedá dýchat'
         done: false
         reward: 50
         assignee: null
     2:
         id: 2
-        name: 'Ukol cislo 2'
-        description: 'Task more specific definition'
+        name: 'Nakrmit psa'
+        description: 'Granule jsou ve sklepě'
         done: false
         reward: 550
         assignee: null
     3:
         id: 3
-        name: 'Ukol cislo 3'
-        description: 'Task more more specific definition'
+        name: 'Nakrmit rybičky'
+        description: 'Krmení se musí koupit'
         done: false
         reward: 320
         assignee: null
+    4:
+        id: 4
+        name: 'Posekat trávník'
+        description: 'Sekačku půjčit od souseda'
+        done: false
+        reward: 220
+        assignee: null
+    5:
+        id: 5
+        name: 'Umýt nádobí'
+        description: 'Nezacákat celou kuchyň'
+        done: false
+        reward: 50
+        assignee: null
+    6:
+        id: 6
+        name: 'Oloupat a nakrájet cibuli k večeři'
+        description: 'na kostičky, cca 1cm'
+        done: false
+        reward: 120
+        assignee: null
+    7:
+        id: 7
+        name: 'Uklidit si pokoj'
+        description: 'a nezapomeň si ustlat!'
+        done: false
+        reward: 200
+        assignee: null
+    8:
+        id: 8
+        name: 'Umýt auto'
+        description: 'už je jako prase'
+        done: false
+        reward: 500
+        assignee: null
+
+
 
 
 router.get '/', (req, res) ->
