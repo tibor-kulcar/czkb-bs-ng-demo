@@ -1,21 +1,26 @@
 app = angular.module 'app'
 
 app.service 'Tasks', ($resource) ->
-    _URI = 'api/me/tasks/:taskId'
-    _instance = $resource(_URI, {taskId: '@id'})
+    _URI = 'api/me/tasks/:taskId/:action'
+    _instance = $resource(_URI, {taskId: '@id'}, {
+        finish: {method: 'POST', params: {action: 'done'}},
+        assign: {method: 'POST', params: {action: 'assign'}}
+    })
     return _instance
 
 app.service 'User', ($http, $q, $location, $route) ->
     URI = 'api/me'
     loggedIn = false
+    _promise = null
 
     _instance = {}
 
     _instance.get = () ->
-        promise = $http.get(URI)
-        promise.success () ->
-            loggedIn = true
-        return promise
+        if (_promise == null)
+            _promise = $http.get(URI)
+            _promise.success (profile) ->
+                loggedIn = true
+        return _promise
 
     _instance.isLogged = () ->
         return loggedIn

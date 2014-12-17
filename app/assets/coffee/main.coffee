@@ -42,8 +42,13 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.isLogged = () ->
         return User.isLogged()
 
+    $scope.finishTask = (task) ->
+        console.log('finish task')
+        Tasks.finish({id: task.id})
+
     $scope.$watch 'assignTask.task', (val) ->
         console.log "a", val
+
 
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
