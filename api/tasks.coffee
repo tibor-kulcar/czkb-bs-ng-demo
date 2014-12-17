@@ -49,12 +49,21 @@ router.post '/:taskId/done', (req, res) ->
     task.done = true
     res.send(task)
 
+router.post '/:taskId/assign', (req, res) ->
+    console.log('Assigning task: ' + req.param('taskId'))
+    task = _findTask(req.param('taskId'))
+    task.assignee = req.body.assignee
+    res.send(task)
+
+
 router.post '/', (req, res) ->
     task =
         id: req.body.id
         name: req.body.name
         description: req.body.description
         reward: req.body.reward
+        done: false
+        assignee: null
     taskList[task.id] = task
     res.send(task)
 
