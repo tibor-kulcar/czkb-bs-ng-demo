@@ -30,12 +30,19 @@
                     <a class="navbar-brand" href="#/">Moje Rodina</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
-                    <div class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <a href="#/login" class="pull-right btn btn-sm btn-success" ng-hide="isLogged()">Login</a>
-                            <a ng-click="logout()" class="btn btn-sm btn-danger" ng-show="isLogged()">Logout</a>
-                        </div>
-                    </div>
+                    <a ng-hide="isLogged()" href="#/login" class="user pull-right btn btn-sm btn-success">Login</a>
+                    <ul class="user nav navbar-nav navbar-right">
+                        <li ng-if="isLogged()" class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <img class="avatar" src="{{ user.avatar }}" alt="">
+                                {{ user.name }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" ng-click="logout()">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
                     <ul class="nav navbar-nav">
                         <li><a href="#/">Home</a></li>
                         <li><a href="#/tasks">Úkoly</a></li>
