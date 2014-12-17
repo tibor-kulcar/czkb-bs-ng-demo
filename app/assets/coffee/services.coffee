@@ -1,12 +1,8 @@
 app = angular.module 'app'
 
-app.service 'Tasks', ($http, $q) ->
-    URI = 'api/me/tasks'
-    _instance = {}
-
-    _instance.get = () ->
-        return $http.get(URI)
-
+app.service 'Tasks', ($resource) ->
+    _URI = 'api/me/tasks/:taskId'
+    _instance = $resource(_URI, {taskId: '@id'})
     return _instance
 
 app.service 'User', ($http, $q, $location, $route) ->

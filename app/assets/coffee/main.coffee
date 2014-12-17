@@ -1,4 +1,4 @@
-app = angular.module 'app', ['ngRoute']
+app = angular.module 'app', ['ngRoute', 'ngResource']
 
 app.config ($routeProvider) ->
     $routeProvider
@@ -20,9 +20,10 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         $scope.hello = "Hello #{result.username}"
         $scope.avatar = result.avatar
         $scope.user = result
-        Tasks.get().success (data) ->
+        Tasks.query((data) ->
             $scope.tasks = data
             console.table(data)
+        )
 
     $scope.todo = (task) ->
         return task.done == no
