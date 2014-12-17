@@ -41,6 +41,16 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         console.log('finish task')
         Tasks.finish({id: task.id})
 
+    $scope.assignTask = (task, user) ->
+        console.log('assign task'+task+' to user + '+user)
+        task.assignee = parseInt(user.id)
+        Tasks.assign({id: task.id}, task).then(
+            Tasks.query((data) ->
+                $scope.tasks = data
+                console.table(data)
+            )
+	)
+
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->
