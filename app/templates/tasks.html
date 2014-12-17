@@ -17,7 +17,7 @@
 						<button ng-click="finishTask(task)"><span class="glyphicon glyphicon-ok"></span></button>
 						<span class="input-group-addon">Přiřadit úkol: </span>
 						<select
-							ng-model="assignTask.task"
+							ng-change="assign(task, child)"
 							ng-options="child.id as child.name for child in user.children"
 							class="form-control">
 						</select>
@@ -26,11 +26,7 @@
 					<h4 class="list-group-item-heading">{{ task.name }}</h4>
 					<p class="list-group-item-text">{{ task.description }}</p>
 				</div>
-
-				<h1>{{assignTask}}</h1>
-
 			</div>
-
 		</div>
 	</div>
 </div>

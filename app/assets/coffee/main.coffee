@@ -46,8 +46,10 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         console.log('finish task')
         Tasks.finish({id: task.id})
 
-    $scope.$watch 'assignTask.task', (val) ->
-        console.log "a", val
+    $scope.$watch 'assignTask.child', (val) ->
+
+        console.log "a", val, $scope.task
+        Tasks.assign
 
     $scope.$watch('isLogged()', (value) ->
         if (value)
