@@ -60,7 +60,7 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         console.log('assign task'+task+' to user + '+user)
         task.assignee = parseInt(user.id)
         Tasks.assign({id: task.id}, task)
-	)
+
 
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
