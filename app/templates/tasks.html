@@ -24,7 +24,9 @@
 						</select>
 					</div>
 					<div class="action-pane input-group" ng-show="task.recent == true">
-						<button class="btn btn-danger" ng-click="unassignTask(task)">Vzít zpět</button>
+						<span class="glyphicon glyphicon-arrow-right"></span> {{assignedUser.name}} 
+						<button class="btn btn-danger" ng-click="unassignTask(task)">
+							Vzít zpět</button>
 					</div>
 
 					<h4 class="list-group-item-heading">{{ task.name }}</h4>
