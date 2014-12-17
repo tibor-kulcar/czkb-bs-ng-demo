@@ -16,15 +16,6 @@ app.config ($routeProvider) ->
 app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.hello = 'Hello world'
 
-    User.get().success (result) ->
-        $scope.hello = "Hello #{result.username}"
-        $scope.avatar = result.avatar
-        $scope.user = result
-        Tasks.query((data) ->
-            $scope.tasks = data
-            console.table(data)
-        )
-
     $scope.todo = (task) ->
         return task.done == no
 
@@ -41,6 +32,17 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         console.log('finish task')
         Tasks.finish({id: task.id})
 
+    $scope.$watch('isLogged()', (value) ->        
+        if (value)
+            User.get().success (result) ->
+                $scope.hello = "Hello #{result.username}"
+                $scope.avatar = result.avatar
+                $scope.user = result
+                Tasks.query((data) ->
+                    $scope.tasks = data
+                    console.table(data)
+                )
+    )
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.logout = ->
@@ -50,5 +52,8 @@ app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.isLogged = () ->
         return User.isLogged()
 
-    User.get().success (result) ->
-        $scope.user = result
+    $scope.$watch('isLogged()', (value) ->
+        if (value)
+            User.get().success (result) ->
+                $scope.user = result
+    )
