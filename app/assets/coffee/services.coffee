@@ -11,14 +11,16 @@ app.service 'Tasks', ($resource) ->
 app.service 'User', ($http, $q, $location, $route) ->
     URI = 'api/me'
     loggedIn = false
+    _promise = null
 
     _instance = {}
 
     _instance.get = () ->
-        promise = $http.get(URI)
-        promise.success () ->
-            loggedIn = true
-        return promise
+        if (_promise == null)
+            _promise = $http.get(URI)
+            _promise.success (profile) ->
+                loggedIn = true
+        return _promise
 
     _instance.isLogged = () ->
         return loggedIn
