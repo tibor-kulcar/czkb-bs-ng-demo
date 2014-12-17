@@ -15,6 +15,7 @@ app.config ($routeProvider) ->
 
 app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.hello = 'Hello world'
+    $scope.assignTask = {}
 
     User.get().success (result) ->
         $scope.hello = "Hello #{result.username}"
@@ -22,8 +23,9 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
         $scope.user = result
         Tasks.query((data) ->
             $scope.tasks = data
-            console.table(data)
+            console.table $scope.tasks
         )
+        console.log $scope.user
 
     $scope.todo = (task) ->
         return task.done == no
@@ -31,11 +33,17 @@ app.controller 'MainController', ($scope, $http, $location, Tasks, User) ->
     $scope.done = (task) ->
         return task.done == yes
 
+    $scope.unassigned = (task) ->
+        return task.assignee == null
+
     $scope.login = (username) ->
         User.login(username)
 
     $scope.isLogged = () ->
         return User.isLogged()
+
+    $scope.$watch 'assignTask.task', (val) ->
+        console.log "a", val
 
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->

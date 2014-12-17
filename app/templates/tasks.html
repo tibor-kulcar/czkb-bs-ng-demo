@@ -9,17 +9,16 @@
 			<div class="list-group">
 
 				<div
-					ng-repeat="task in tasks | filter:todo"
+					ng-repeat="task in tasks | filter:unassigned"
 					href=""
 					class="list-group-item">
 
 					<div class="assign-task input-group">
 						<span class="input-group-addon">Přiřadit úkol: </span>
 						<select
-							ng-model="assignTask"
+							ng-model="assignTask.task"
+							ng-options="child.id as child.name for child in user.children"
 							class="form-control">
-							<option value=""></option>
-							<option value="user.name" ng-repeat="user in user.children">{{ user.name }}</option>
 						</select>
 					</div>
 
@@ -27,6 +26,7 @@
 					<p class="list-group-item-text">{{ task.description }}</p>
 				</div>
 
+				<h1>{{assignTask}}</h1>
 
 			</div>
 
