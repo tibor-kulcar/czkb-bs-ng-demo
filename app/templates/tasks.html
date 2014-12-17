@@ -7,14 +7,13 @@
 		<div class="col-sm-12">
 
 			<div class="list-group">
-
 				<div
 					ng-repeat="task in tasks | filter:unassigned"
 					href=""
 					ng-class="task.recent ? 'list-group-item-info':''"
 					class="list-group-item">
 
-					<div class="assign-task input-group">
+					<div class="assign-task input-group" ng-show="task.assignee == null">
 						<span class="input-group-addon">Přiřadit úkol: </span>
 						<select
 							ng-model="assignedUser"
@@ -23,6 +22,9 @@
 							class="form-control">
 							<option value="">--vyberte--</option>
 						</select>
+					</div>
+					<div class="assign-task input-group" ng-show="task.recent == true">
+						<button class="btn btn-danger" ng-click="unassignTask(task)">Vzít zpět</button>
 					</div>
 
 					<h4 class="list-group-item-heading">{{ task.name }}</h4>

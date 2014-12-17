@@ -32,7 +32,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         return task.done == yes
 
     $scope.unassigned = (task) ->
-        return task.assignee == null
+        return task.assignee == null || task.recent == true
 
     $scope.login = (username) ->
         User.login(username)
@@ -63,9 +63,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         Tasks.assign({id: task.id}, task)
         $timeout ->
             task.recent = false
-        , 3000
-
-
+        , 4000
 
     $scope.unassignTask = (task) ->
         task.assignee = null
