@@ -8,56 +8,70 @@ taskList =
         name: 'Vynést koš'
         description: 'Už se tu nedá dýchat'
         done: false
-        reward: 50
+        reward: 5
         assignee: null
     2:
         id: 2
         name: 'Nakrmit psa'
         description: 'Granule jsou ve sklepě'
         done: false
-        reward: 550
+        reward: 10
         assignee: null
     3:
         id: 3
         name: 'Nakrmit rybičky'
         description: 'Krmení se musí koupit'
         done: false
-        reward: 320
+        reward: 15
         assignee: null
     4:
         id: 4
         name: 'Posekat trávník'
         description: 'Sekačku půjčit od souseda'
         done: false
-        reward: 220
+        reward: 25
         assignee: null
     5:
         id: 5
         name: 'Umýt nádobí'
         description: 'Nezacákat celou kuchyň'
         done: false
-        reward: 50
+        reward: 10
         assignee: null
     6:
         id: 6
         name: 'Oloupat a nakrájet cibuli k večeři'
         description: 'na kostičky, cca 1cm'
         done: false
-        reward: 120
+        reward: 10
         assignee: null
     7:
         id: 7
         name: 'Uklidit si pokoj'
         description: 'a nezapomeň si ustlat!'
         done: false
-        reward: 200
+        reward: 5
         assignee: null
     8:
         id: 8
         name: 'Umýt auto'
         description: 'už je jako prase'
         done: false
-        reward: 500
+        reward: 20
+        assignee: null
+    9:
+        id: 9
+        name: 'Naštípat dříví'
+        description: 'pozor, sekyra je nabroušená!'
+        done: false
+        reward: 20
+        assignee: null
+    10:
+        id: 10
+        name: 'Zalít zahradu'
+        description: 'vodu nechat odstát'
+        done: false
+        reward: 10
         assignee: null
 
 
