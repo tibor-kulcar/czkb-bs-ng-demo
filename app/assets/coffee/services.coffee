@@ -16,11 +16,14 @@ app.service 'User', ($http, $q, $location, $route) ->
     _instance = {}
 
     _instance.get = () ->
-        if (_promise == null)
-            _promise = $http.get(URI)
-            _promise.success (profile) ->
+        if (loggedIn && _promise)
+            return _promise
+        else
+            promise = $http.get(URI)
+            promise.success (profile) ->
                 loggedIn = true
-        return _promise
+                _promise = promise
+        return promise
 
     _instance.isLogged = () ->
         return loggedIn

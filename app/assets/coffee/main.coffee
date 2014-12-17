@@ -46,6 +46,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
 
     $scope.$watch('isLogged()', (value) ->
         if (value)
+            console.log('Logged in, load everything')
             User.get().success (result) ->
                 $scope.hello = "Hello #{result.username}"
                 $scope.avatar = result.avatar
@@ -78,5 +79,10 @@ app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.isLogged = () ->
         return User.isLogged()
 
-    User.get().success (result) ->
-        $scope.user = result
+
+    $scope.$watch('isLogged()', (value) ->
+        if (value)
+            console.log('Logged in, load menu')
+            User.get().success (result) ->
+                $scope.user = result
+    )
