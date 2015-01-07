@@ -10,21 +10,21 @@ taskList =
         description: 'Už se tu nedá dýchat'
         done: false
         reward: 5
-        assignee: null
+        assignee: 1
     2:
         id: 2
         name: 'Nakrmit psa'
         description: 'Granule jsou ve sklepě'
         done: false
         reward: 10
-        assignee: null
+        assignee: 2
     3:
         id: 3
         name: 'Nakrmit rybičky'
         description: 'Krmení se musí koupit'
         done: false
         reward: 15
-        assignee: null
+        assignee: 1
     4:
         id: 4
         name: 'Posekat trávník'
