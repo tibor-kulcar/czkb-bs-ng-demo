@@ -1,45 +1,53 @@
 router = require('express').Router()
+_ = require('lodash')
 router.use require('./session').loginRequired
+
+children = [{
+  id: 1
+  name: 'Katka'
+  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg'
+  balance:
+      amount: 100
+      currency: 'CZK'
+  target:
+      amount: 500
+      currency: 'CZK'
+} , {
+  id: 2
+  name: 'Tim'
+  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/timmillwood/73.jpg'
+  balance:
+      amount: 200
+      currency: 'CZK'
+  target:
+      amount: 500
+      currency: 'CZK'
+} ]
 
 router.get '/', (req, res) ->
     res.send
         username: req.session.username
         name: 'Jan Novák'
         avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/c_southam/73.jpg'
-        children: [
-            {
-                id: 1
-                name: 'Katka'
-                avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg'
-                account:
-                    amount: 100
-                    currency: 'CZK'
-            },
-            {
-                id: 2
-                name: 'Tim'
-                avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/timmillwood/73.jpg'
-                account:
-                    amount: 200
-                    currency: 'CZK'
-
-            }
-        ]
+        children: children
         resources: [
             {
                 name: 'account'
                 uri: '/me/account'
                 description: 'Account information'
-            }, {
+            } , {
                 name: 'tasks'
                 uri: 'me/tasks'
                 description: 'Task list'
             }
         ]
 
-router.get '/account', (req, res) ->
-    res.send
-        ammount: 100
-        currency: 'CZK'
+router.get '/child/:childId', (req, res) ->
+    res.send(_findChild(req.param('childId')))
+
+_findChild = (childId) ->
+    return _.find(children, (c) ->
+        return parseInt(c.id) == parseInt(childId)
+    )
 
 module.exports = router
