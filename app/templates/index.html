@@ -1,51 +1,50 @@
 <div ng-hide="isLogged()" class="jumbotron">
-    <div class="container">
-        <h1> {{ hello }} </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sunt perspiciatis, eum maxime cumque praesentium eius totam dicta asperiores, quasi, doloribus! Optio id vel asperiores, minus, deleniti suscipit culpa repellendus.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Call To Action &nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></p>
-    </div>
+  <div class="container">
+    <h1> {{ hello }} </h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sunt perspiciatis, eum maxime cumque praesentium eius totam dicta asperiores, quasi, doloribus! Optio id vel asperiores, minus, deleniti suscipit culpa repellendus.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Call To Action &nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+    </p>
+  </div>
 </div>
 
 <div ng-show="isLogged()" class="container">
-    <div class="page-header">
-        <h1>Skóre</h1>
-        <p class="lead">
-            Jak to u nás vypadá
-        </p>
-    </div>
-    <div class="row" ng-repeat-start="child in user.children">
-        <div class="col-sm-4">
-            <div class="row">
-                <div class="col-sm-3">
-                    <img class="pull-left" src="{{ child.avatar }}">
-                </div>
-                <div class="col-sm-9">
-                    <span class="h3">{{ child.name }}</span>
-                    <p>
-                        {{ child.account.amount }} {{ child.account.currency }}
-                    </p>
-                </div>
-            </div>
+  <div class="page-header">
+    <h1>Skóre</h1>
+    <p class="lead">
+      Jak to u nás vypadá
+    </p>
+  </div>
+  <div class="row" ng-repeat-start="child in user.children">
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-3">
+          <img class="pull-left" src="{{ child.avatar }}">
         </div>
-        <div class="col-sm-8">
-            <div class="list-group">
-                <a
-                    ng-repeat="task in tasks | filter:{assignee: child.id}"
-                    class="list-group-item" ng-show="task.recent || !task.done"
-                    ng-class="task.recent ? 'recent':''">
-                    <div class="input-group action-pane" ng-show="!task.done">
-                        <button class="btn" ng-click="finishTask(task)"><span class="glyphicon glyphicon-ok"></span> Hotovo</button>
-                    </div>
-                    <div class="action-pane input-group" ng-show="task.recent == true">
-                        <button class="btn btn-danger" ng-click="unfinishTask(task)">Vzít zpět</button>
-                    </div>
-
-                    <h4 class="list-group-item-heading">{{ task.name }}</h4>
-                    <p class="list-group-item-text">{{ task.description }}</p>
-
-                </a>
-            </div>
+        <div class="col-sm-9">
+          <span class="h3">{{ child.name }}</span>
+          <p>
+            {{ child.account.amount }} {{ child.account.currency }}
+          </p>
         </div>
+      </div>
     </div>
-    <hr ng-repeat-end>
+    <div class="col-sm-8">
+      <div class="list-group">
+        <a ng-repeat="task in tasks | filter:{assignee: child.id}" class="list-group-item" ng-show="task.recent || !task.done" ng-class="task.recent ? 'recent':''">
+          <div class="input-group action-pane" ng-show="!task.done">
+            <button class="btn btn-success" ng-click="finishTask(task)">
+              <span class="glyphicon glyphicon-ok"></span> Hotovo</button>
+          </div>
+          <div class="action-pane input-group" ng-show="task.recent == true">
+            <button class="btn btn-danger" ng-click="unfinishTask(task)">Vzít zpět</button>
+          </div>
+
+          <h4 class="list-group-item-heading">{{ task.name }}</h4>
+          <p class="list-group-item-text">{{ task.description }}</p>
+
+        </a>
+      </div>
+    </div>
+  </div>
+  <hr ng-repeat-end>
 </div>
