@@ -39,17 +39,21 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
     $scope.isLogged = () ->
         return User.isLogged()
 
-    $scope.finishTask = (task) ->
+    $scope.finishTask = (task, child) ->
         task.recent = true
         task.done = true
+        child.balance.amount += task.reward
         Tasks.finish({id: task.id})
         $timeout () ->
             task.recent = false
         , 4000
 
-    $scope.unfinishTask = (task) ->
+    $scope.unfinishTask = (task, child) ->
         task.recent = false
         task.done = false
+        child.balance.amount -= task.reward
+        if (child.balance.amount < 0)
+            child.balance.amount = 0
         Tasks.unfinish({id: task.id})
 
     $scope.$watch('isLogged()', (value) ->

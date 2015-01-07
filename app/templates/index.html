@@ -23,8 +23,12 @@
         <div class="col-sm-9">
           <span class="h3">{{ child.name }}</span>
           <p>
-            {{ child.account.amount }} {{ child.account.currency }}
+              {{ child.balance.amount }} / {{ child.target.amount }} {{ child.balance.currency }}
           </p>
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ child.balance.amount }}" aria-valuemin="0" aria-valuemax="{{ child.target.amount }}" style="width: {{ (child.balance.amount / child.target.amount)*100 }}%;">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -32,11 +36,11 @@
       <div class="list-group">
         <a ng-repeat="task in tasks | filter:{assignee: child.id}" class="list-group-item" ng-show="task.recent || !task.done" ng-class="task.recent ? 'recent':''">
           <div class="input-group action-pane" ng-show="!task.done">
-            <button class="btn btn-success" ng-click="finishTask(task)">
+            <button class="btn btn-success" ng-click="finishTask(task, child)">
               <span class="glyphicon glyphicon-ok"></span> Hotovo</button>
           </div>
           <div class="action-pane input-group" ng-show="task.recent == true">
-            <button class="btn btn-danger" ng-click="unfinishTask(task)">Vzít zpět</button>
+            <button class="btn btn-danger" ng-click="unfinishTask(task, child)">Vzít zpět</button>
           </div>
 
           <h4 class="list-group-item-heading">{{ task.name }}</h4>
