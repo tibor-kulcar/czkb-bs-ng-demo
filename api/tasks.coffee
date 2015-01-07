@@ -136,7 +136,7 @@ _findTask = (taskId) ->
     )
 
 _nextId = () ->
-    max = _.max(taskList, (t)) ->
+    max = _.max taskList, (t) ->
         return t.id
     return max + 1
 
