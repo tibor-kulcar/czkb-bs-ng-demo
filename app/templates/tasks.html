@@ -3,6 +3,30 @@
 		<h1>Úkoly</h1>
 		<p class="lead">Seznam nepřiřazených úkolů</p>
 	</div>
+	
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<form class="form-inline">
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail2">Název</label>
+			    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Název" ng-model="newtask.name">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword2">Popis</label>
+			    <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Popis" ng-model="newtask.description">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword2">Odměna</label>
+			    <input type="number" class="form-control" id="exampleInputPassword2" placeholder="Odměna" ng-model="newtask.reward">
+			  </div>
+			  <button type="submit" class="btn btn-success" ng-click="createTask(newtask)">Přidat úkol</button>
+			</form>
+		</div>
+	</div>
+	
+	<br />
+		
 	<div class="row">
 		<div class="col-sm-12">
 
