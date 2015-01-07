@@ -68,6 +68,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
     $scope.assignTask = (task, user) ->
         console.log('assign task'+task+' to user + '+user)
         task.assignee = parseInt(user.id)
+        task.assigneeName = user.name
         task.recent = true
         Tasks.assign({id: task.id}, task)
         $timeout ->
