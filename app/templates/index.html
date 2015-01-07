@@ -10,9 +10,18 @@
 <div ng-show="isLogged()" class="container">
   <div class="page-header">
     <h1>Skóre</h1>
-    <p class="lead">
-      Jak to u nás vypadá
-    </p>
+
+      <div class="row">
+          <div class="col-sm-11">
+              <p class="lead">
+                  Jak to u nás vypadá
+              </p>
+          </div>
+          <div class="col-sm-1">
+              <input type="checkbox" ng-model="showAll">
+              Vše
+          </div>
+      </div>
   </div>
   <div class="row" ng-repeat-start="child in user.children">
     <div class="col-sm-4">
@@ -34,7 +43,7 @@
     </div>
     <div class="col-sm-8">
       <div class="list-group">
-        <a ng-repeat="task in tasks | filter:{assignee: child.id}" class="list-group-item" ng-show="task.recent || !task.done" ng-class="task.recent ? 'recent':''">
+        <a ng-repeat="task in tasks | filter:{assignee: child.id}" class="list-group-item" ng-show="task.recent || !task.done || showAll " ng-class="task.recent ? 'recent':''">
           <div class="input-group action-pane" ng-show="!task.done">
             <button class="btn btn-success" ng-click="finishTask(task, child)">
               <span class="glyphicon glyphicon-ok"></span> Hotovo</button>

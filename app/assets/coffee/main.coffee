@@ -15,6 +15,7 @@ app.config ($routeProvider) ->
 
 app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, User) ->
     $scope.hello = 'Hello world'
+    $scope.showAll = false
 
     User.get().success (result) ->
         $scope.hello = "Hello #{result.username}"
