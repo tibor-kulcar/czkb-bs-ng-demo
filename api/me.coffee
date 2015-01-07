@@ -2,7 +2,7 @@ router = require('express').Router()
 _ = require('lodash')
 router.use require('./session').loginRequired
 
-children = [{
+router.children = [{
   id: 1
   name: 'Katka'
   avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg'
@@ -29,7 +29,7 @@ router.get '/', (req, res) ->
         username: req.session.username
         name: 'Jan Novák'
         avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/c_southam/73.jpg'
-        children: children
+        children: router.children
         resources: [
             {
                 name: 'account'
@@ -46,7 +46,7 @@ router.get '/child/:childId', (req, res) ->
     res.send(_findChild(req.param('childId')))
 
 _findChild = (childId) ->
-    return _.find(children, (c) ->
+    return _.find(router.children, (c) ->
         return parseInt(c.id) == parseInt(childId)
     )
 

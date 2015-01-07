@@ -1,5 +1,6 @@
 router = require('express').Router()
 _ = require('lodash')
+children = require('./me').children
 
 # mock task list
 taskList =
@@ -80,7 +81,7 @@ taskList =
 router.get '/', (req, res) ->
     res.send(task for task_id, task of taskList)
 
-router.get '/:taskId',  (req, res) ->
+router.get '/:taskId', (req, res) ->
     console.log('Looking for task: ' + req.param('taskId'))
     task = _findTask(req.param('taskId'))
     res.send(task)
@@ -95,20 +96,24 @@ router.post '/:taskId', (req, res) ->
     res.send(task)
 
 router.post '/:taskId/done', (req, res) ->
-    console.log('Finishing task: ' + req.param('taskId'))
     task = _findTask(req.param('taskId'))
+    console.log("Finishing task: #{req.param('taskId')} for #{task.assignee}")
     task.done = true
+    assignee = _findChild(task.assignee)
+    assignee.balance.amount += task.reward
     res.send(task)
 
 router.post '/:taskId/undone', (req, res) ->
-    console.log('Returning task: ' + req.param('taskId'))
     task = _findTask(req.param('taskId'))
+    console.log("Returning task: #{req.param('taskId')} for #{task.assignee}")
     task.done = false
+    assignee = _findChild(task.assignee)
+    assignee.balance.amount -= task.reward
     res.send(task)
 
 
 router.post '/:taskId/assign', (req, res) ->
-    console.log('Assigning task: ' + req.param('taskId'))
+    console.log("Assigning task: #{req.param('taskId')} to #{req.body.assignee}")
     task = _findTask(req.param('taskId'))
     task.assignee = req.body.assignee
     res.send(task)
@@ -129,6 +134,12 @@ _findTask = (taskId) ->
     return _.find(taskList, (t) ->
         return parseInt(t.id) == parseInt(taskId)
     )
+
+_findChild = (childId) ->
+    return _.find(children, (c) ->
+        return parseInt(c.id) == parseInt(childId)
+    )
+
 
 
 module.exports = router
