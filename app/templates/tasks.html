@@ -28,7 +28,8 @@
 						<button class="btn btn-danger" ng-show="task.recent == true" ng-click="unassignTask(task)">Vzít zpět</button>
 					</div>
 
-					<h4 class="list-group-item-heading">{{ task.name }}</h4>
+					<h4 class="list-group-item-heading">{{ task.name }}
+					<span class="label label-success">{{task.reward}} CZK</span></h4>
 					<p class="list-group-item-text">{{ task.description }}</p>
 				</div>
 			</div>
