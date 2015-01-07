@@ -1,5 +1,9 @@
 app = angular.module 'app', ['ngRoute', 'ngResource', 'ngAnimate']
 
+app.constant 'CONFIG', {
+    undoTimeout: 10000
+  }
+
 app.config ($routeProvider) ->
     $routeProvider
         .when '/login/',
@@ -13,7 +17,7 @@ app.config ($routeProvider) ->
             controller: 'MainController'
 
 
-app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, User) ->
+app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, User, CONFIG) ->
     $scope.hello = 'Hello world'
     $scope.showAll = false
 
@@ -47,7 +51,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         Tasks.finish({id: task.id})
         $timeout () ->
             task.recent = false
-        , 4000
+        , CONFIG.undoTimeout
 
     $scope.unfinishTask = (task, child) ->
         task.recent = false
@@ -78,7 +82,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         Tasks.assign({id: task.id}, task)
         $timeout ->
             task.recent = false
-        , 4000
+        , CONFIG.undoTimeout
 
     $scope.unassignTask = (task) ->
         task.assignee = null
