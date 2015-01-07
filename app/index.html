@@ -31,7 +31,7 @@
         <a class="navbar-brand" href="#/">Moje Rodina</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
-        <a ng-hide="isLogged()" href="#/login" class="user pull-right btn btn-sm btn-success">Login</a>
+        <a ng-hide="isLogged()" href="#/login" class="user pull-right btn btn-sm btn-success">Přihlásit</a>
         <ul class="user nav navbar-nav navbar-right">
           <li ng-if="isLogged()" class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -39,7 +39,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#" ng-click="logout()">Logout</a>
+              <li><a href="#" ng-click="logout()">Odhlásit</a>
               </li>
             </ul>
           </li>

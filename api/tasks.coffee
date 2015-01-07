@@ -10,21 +10,21 @@ taskList =
         description: 'Už se tu nedá dýchat'
         done: false
         reward: 5
-        assignee: null
+        assignee: 1
     2:
         id: 2
         name: 'Nakrmit psa'
         description: 'Granule jsou ve sklepě'
         done: false
         reward: 10
-        assignee: null
+        assignee: 2
     3:
         id: 3
         name: 'Nakrmit rybičky'
         description: 'Krmení se musí koupit'
         done: false
         reward: 15
-        assignee: null
+        assignee: 1
     4:
         id: 4
         name: 'Posekat trávník'
@@ -121,7 +121,7 @@ router.post '/:taskId/assign', (req, res) ->
 
 router.post '/', (req, res) ->
     task =
-        id: req.body.id
+        id: _nextId()
         name: req.body.name
         description: req.body.description
         reward: req.body.reward
@@ -134,6 +134,14 @@ _findTask = (taskId) ->
     return _.find(taskList, (t) ->
         return parseInt(t.id) == parseInt(taskId)
     )
+
+_nextId = () ->
+    max = _.max(taskList, (t) ->
+        return t.id
+    )
+    return max.id + 1
+
+
 
 _findChild = (childId) ->
     return _.find(children, (c) ->

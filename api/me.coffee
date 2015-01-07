@@ -7,20 +7,20 @@ router.children = [{
   name: 'Katka'
   avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/73.jpg'
   balance:
-      amount: 100
+      amount: 15
       currency: 'CZK'
   target:
-      amount: 500
+      amount: 150
       currency: 'CZK'
 } , {
   id: 2
   name: 'Tim'
   avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/timmillwood/73.jpg'
   balance:
-      amount: 200
+      amount: 5
       currency: 'CZK'
   target:
-      amount: 500
+      amount: 100
       currency: 'CZK'
 } ]
 
