@@ -12,6 +12,7 @@ router.children = [{
   target:
       amount: 150
       currency: 'CZK'
+      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/juanpablob/73.jpg'
 } , {
   id: 2
   name: 'Tim'
@@ -22,6 +23,7 @@ router.children = [{
   target:
       amount: 100
       currency: 'CZK'
+      avatar: 'http://res.cloudinary.com/nationbuilder/image/twitter/w_73,h_73,c_fill/23803817.jpg'
 } ]
 
 router.get '/', (req, res) ->
