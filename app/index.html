@@ -57,9 +57,9 @@
           </li>
 
 	 		<li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Téma <span class="caret"></span></a>
+	          <a class="dropdown-toggle" data-toggle="dropdown" role="button">Téma <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li ng-repeat="theme in themes"><a ng-click="setTheme(theme)">{{ theme }}</a></li>
+	            <li ng-repeat="t in themes" ng-attr-class="{{t == theme ? 'active' : ''}}"><a ng-click="setTheme(t)">{{ t }}</a></li>
 	          </ul>
 	        </li>
         </ul>

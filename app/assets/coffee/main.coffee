@@ -103,7 +103,23 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
 app.controller 'MenuController', ($scope, $http, $location, User) ->
     $scope.theme = 'cyborg'
 
-    $scope.themes = ['cyborg', 'united', 'cerulean' ]
+    $scope.themes = ['cerulean',
+                     'cosmo',
+                     'cyborg',
+                     'darkly',
+                     'flatly',
+                     'fonts',
+                     'journal',
+                     'lumen',
+                     'paper',
+                     'readable',
+                     'sandstone',
+                     'simplex',
+                     'slate',
+                     'spacelab',
+                     'superhero',
+                     'united',
+                     'yeti' ]
 
     $scope.setTheme = (t) ->
     	$scope.theme = t
