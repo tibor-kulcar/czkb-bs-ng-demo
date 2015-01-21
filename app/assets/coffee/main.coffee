@@ -8,7 +8,7 @@ app.config ($routeProvider) ->
     $routeProvider
         .when '/login/',
             templateUrl: 'templates/login.html'
-            controller: 'MainController'
+            controller: 'MainControler'
         .when '/tasks/',
             templateUrl: 'templates/tasks.html'
             controller: 'MainController'
@@ -101,6 +101,13 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         )
 
 app.controller 'MenuController', ($scope, $http, $location, User) ->
+    $scope.theme = 'cyborg'
+
+    $scope.themes = ['cyborg', 'united', 'cerulean' ]
+
+    $scope.setTheme = (t) ->
+    	$scope.theme = t
+    	
     $scope.logout = ->
         console.log('Logging out')
         User.logout()
