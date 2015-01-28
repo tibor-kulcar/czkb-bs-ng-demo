@@ -45,7 +45,7 @@ module.exports = (grunt) ->
 #                basePath: '../'
                 preprocessors:
                     '**/*.coffee': ['coffee']
-                    
+
                 frameworks: ['jasmine']
 
                 browsers: ['Chrome'],
@@ -61,11 +61,17 @@ module.exports = (grunt) ->
                 junitReporter:
                     outputFile: 'tests/out/unit.xml',
                     suite: 'unit'
+        notify_hooks:
+            options:
+                title: "Moje rodina"
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-less'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-karma'
+    grunt.loadNpmTasks 'grunt-notify'
+
+    grunt.task.run('notify_hooks')
 
     grunt.registerTask 'default', [
         'build'
