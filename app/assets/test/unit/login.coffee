@@ -26,3 +26,18 @@ describe "login service test", () ->
 
         #User is logged in
         expect(service.isLogged()).toBe(true)
+
+    it "Ensure logout works", () ->
+        #User is not logged in
+        expect(service.isLogged()).toBe(false)
+        #First expect login request
+        $httpBackend.expectPOST('/api/session', {
+            username: 'Franta'
+        }).respond({})
+        $httpBackend.expectDELETE('/api/session').respond({})
+        $httpBackend.expectGET('templates/index.html').respond({})
+
+        service.login('Franta')
+        service.logout()
+
+        $httpBackend.flush()
