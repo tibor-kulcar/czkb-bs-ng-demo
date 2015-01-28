@@ -36,6 +36,8 @@ module.exports = (grunt) ->
                     files: [
                        'app/assets/vendor/angularjs/angular.js',
                        'app/assets/vendor/angular-route/angular-route.js',
+                       'app/assets/vendor/angular-resource/angular-resource.js',
+                       'app/assets/vendor/angular-animate/angular-animate.js',
                        'app/assets/vendor/angular-mocks/angular-mocks.js',
                        'app/assets/coffee/*.coffee',
                        'app/assets/test/unit/*.coffee'
