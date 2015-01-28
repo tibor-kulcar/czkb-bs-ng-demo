@@ -8,7 +8,7 @@ app.config ($routeProvider) ->
     $routeProvider
         .when '/login/',
             templateUrl: 'templates/login.html'
-            controller: 'MainControler'
+            controller: 'MainController'
         .when '/tasks/',
             templateUrl: 'templates/tasks.html'
             controller: 'MainController'
