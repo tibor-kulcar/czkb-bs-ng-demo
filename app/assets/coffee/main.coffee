@@ -20,6 +20,7 @@ app.config ($routeProvider) ->
 app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, User, CONFIG) ->
     $scope.hello = 'Hello world'
     $scope.showAll = false
+    $scope.setTheme('cosmo')
 
     User.get().success (result) ->
         $scope.hello = "Hello #{result.username}"
@@ -30,7 +31,7 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         )
 
     $scope.todo = (task) ->
-        return task.done == no    
+        return task.done == no
 
     $scope.done = (task) ->
         return task.done == yes
@@ -88,11 +89,11 @@ app.controller 'MainController', ($scope, $http, $location, $timeout, Tasks, Use
         task.assignee = null
         task.recent = false
         Tasks.assign({id: task.id}, task)
-        
+
     $scope.createTask = (newtask) ->
         newtask.done = false
         newtask.assignee = null
-        
+
         Tasks.save(newtask).$promise.then(() ->
         	Tasks.query((data) ->
         		$scope.tasks = data
@@ -123,7 +124,7 @@ app.controller 'MenuController', ($scope, $http, $location, User) ->
 
     $scope.setTheme = (t) ->
     	$scope.theme = t
-    	
+
     $scope.logout = ->
         console.log('Logging out')
         User.logout()
